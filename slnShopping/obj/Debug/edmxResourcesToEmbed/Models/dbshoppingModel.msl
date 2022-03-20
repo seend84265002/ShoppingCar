@@ -50,5 +50,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tGusetBooks">
+      <EntityTypeMapping TypeName="dbShoppingCarModel.tGusetBooks">
+        <MappingFragment StoreEntitySet="tGusetBooks">
+          <ScalarProperty Name="fReplyTime" ColumnName="fReplyTime" />
+          <ScalarProperty Name="fReply" ColumnName="fReply" />
+          <ScalarProperty Name="fCreateTime" ColumnName="fCreateTime" />
+          <ScalarProperty Name="fContent" ColumnName="fContent" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fId" ColumnName="fId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

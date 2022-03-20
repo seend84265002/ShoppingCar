@@ -154,6 +154,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbshoppingModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\tGusetBooks.cs">
+      <DependentUpon>dbshoppingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tMember.cs">
       <DependentUpon>dbshoppingModel.tt</DependentUpon>
     </Compile>
@@ -206,8 +209,6 @@
       <DependentUpon>dbshoppingModel.edmx</DependentUpon>
       <LastGenOutput>dbshoppingModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\dbshoppingModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>dbshoppingModel.Designer.cs</LastGenOutput>
@@ -215,7 +216,17 @@
     <Content Include="Models\dbshoppingModel.edmx.diagram">
       <DependentUpon>dbshoppingModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -247,14 +258,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

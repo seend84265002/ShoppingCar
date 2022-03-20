@@ -4,7 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbShoppingCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbShoppingCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tGusetBooks">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="int" Nullable="false" />
+          <Property Name="fName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fContent" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fCreateTime" Type="datetime" Nullable="false" />
+          <Property Name="fReply" Type="nvarchar" MaxLength="100" />
+          <Property Name="fReplyTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="tMember">
           <Key>
             <PropertyRef Name="fId" />
@@ -51,13 +62,13 @@
           <Property Name="fImg" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="dbShoppingCarModelStoreContainer">
+          <EntitySet Name="tGusetBooks" EntityType="Self.tGusetBooks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tOrderDetail" EntityType="Self.tOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbShoppingCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -111,7 +122,19 @@
           <EntitySet Name="tOrder" EntityType="Self.tOrder" />
           <EntitySet Name="tOrderDetail" EntityType="Self.tOrderDetail" />
           <EntitySet Name="tProduct" EntityType="Self.tProduct" />
+          <EntitySet Name="tGusetBooks" EntityType="dbShoppingCarModel.tGusetBooks" />
         </EntityContainer>
+        <EntityType Name="tGusetBooks">
+          <Key>
+            <PropertyRef Name="fId" />
+          </Key>
+          <Property Name="fId" Type="Int32" Nullable="false" />
+          <Property Name="fName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fContent" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fCreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fReply" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fReplyTime" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -164,6 +187,18 @@
                 <ScalarProperty Name="fName" ColumnName="fName" />
                 <ScalarProperty Name="fPrice" ColumnName="fPrice" />
                 <ScalarProperty Name="fImg" ColumnName="fImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tGusetBooks">
+            <EntityTypeMapping TypeName="dbShoppingCarModel.tGusetBooks">
+              <MappingFragment StoreEntitySet="tGusetBooks">
+                <ScalarProperty Name="fReplyTime" ColumnName="fReplyTime" />
+                <ScalarProperty Name="fReply" ColumnName="fReply" />
+                <ScalarProperty Name="fCreateTime" ColumnName="fCreateTime" />
+                <ScalarProperty Name="fContent" ColumnName="fContent" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="fId" ColumnName="fId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -50,5 +50,17 @@
     <EntitySet Name="tOrder" EntityType="Self.tOrder" />
     <EntitySet Name="tOrderDetail" EntityType="Self.tOrderDetail" />
     <EntitySet Name="tProduct" EntityType="Self.tProduct" />
+    <EntitySet Name="tGusetBooks" EntityType="dbShoppingCarModel.tGusetBooks" />
   </EntityContainer>
+  <EntityType Name="tGusetBooks">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="Int32" Nullable="false" />
+    <Property Name="fName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fContent" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fCreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fReply" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fReplyTime" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbShoppingCarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tGusetBooks">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" Nullable="false" />
+    <Property Name="fName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fContent" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="fCreateTime" Type="datetime" Nullable="false" />
+    <Property Name="fReply" Type="nvarchar" MaxLength="100" />
+    <Property Name="fReplyTime" Type="datetime" />
+  </EntityType>
   <EntityType Name="tMember">
     <Key>
       <PropertyRef Name="fId" />
@@ -46,6 +57,7 @@
     <Property Name="fImg" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="dbShoppingCarModelStoreContainer">
+    <EntitySet Name="tGusetBooks" EntityType="Self.tGusetBooks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tOrderDetail" EntityType="Self.tOrderDetail" Schema="dbo" store:Type="Tables" />

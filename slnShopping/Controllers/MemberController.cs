@@ -8,11 +8,12 @@ using System.Web.Security;
 using Antlr.Runtime.Misc;
 using slnShopping.Models;
 using PagedList.Mvc;
+
 using PagedList;
 
 namespace slnShopping.Controllers
 {
-    [Authorize]
+    [Authorize]//簡單的登入過濾
     public class MemberController : Controller
     {
         // GET: Member
@@ -46,7 +47,7 @@ namespace slnShopping.Controllers
             //該商品如果沒有在購物車就新增一筆產品資料
             if(currentCar == null)
             {
-                //找出目前商品指定給product
+                //依fId 找出目前商品指定給product
                 var product = db.tProduct.Where(m => m.fPId == fPId).FirstOrDefault();
                 tOrderDetail orderDetail = new tOrderDetail();
                 orderDetail.fUserId = fUserId;
@@ -59,7 +60,7 @@ namespace slnShopping.Controllers
             }
             else
             {
-                //如果有該商品，數量就加1
+                //如果購物車有該商品，數量就加1
                 currentCar.fQty += 1;
             }
             
@@ -70,7 +71,7 @@ namespace slnShopping.Controllers
         {
             //依fId 判斷要刪除的購物車裡的商品
             var orderDetail = db.tOrderDetail.Where(m => m.fId == fId).FirstOrDefault();
-            //如果商品大於1就刪除1個該商品，等於1個就刪除該商品
+            //如果商品大於1就刪除1個該商品，等於1個就把該商品從購物車刪除
             if (orderDetail.fQty == 1)
             {
                 db.tOrderDetail.Remove(orderDetail);

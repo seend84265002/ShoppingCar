@@ -1,7 +1,7 @@
 ﻿@using PagedList
 @using PagedList.Mvc
 
-@model IPagedList<slnShopping.Models.tProduct>
+@model IEnumerable<slnShopping.Models.tProduct>
 
 @{
     ViewBag.Title = "商品列表";
@@ -13,16 +13,18 @@
 
 
 <div class="row" style="margin-top:20px;">
+    @*顯示商品*@
     @foreach (var item in Model)
     {
         <div class="col-md-4">
             <div class="thumbnail">
                 <img src="~/images/@item.fImg" style="width:240px ;height:300px;" />
                 <div class="caption">
-                    <h4>@item.fName</h4>
+                    <h4>@item.fName</h4>@*商品名稱*@
                     <p></p>
-                    <p>單價: @item.fPrice 元</p>
+                    <p>單價: @item.fPrice 元</p>@*商品價錢*@
                     <p>
+                        @*加入購物車按鈕*@
                         <a href="@Url.Action("AddCar","Member")?fPId=@item.fPId"
                            class="btn btn-primary">加入購物車</a>
                     </p>
@@ -31,7 +33,7 @@
         </div>
     }
 </div>
-@Html.PagedListPager(Model, page=> Url.Action("Index", new { page }))
+@Html.PagedListPager((IPagedList)Model, page=> Url.Action("Index", new { page }))
 
 
 

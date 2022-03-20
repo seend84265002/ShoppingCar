@@ -80,5 +80,8 @@ namespace slnShopping.Controllers
             ViewBag.Message = "此帳號已有人使用，註冊失敗";
             return View();
         }
+
+
+
     }
 }

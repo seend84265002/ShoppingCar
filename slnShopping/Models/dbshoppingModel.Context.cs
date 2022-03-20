@@ -29,5 +29,6 @@ namespace slnShopping.Models
         public virtual DbSet<tOrder> tOrder { get; set; }
         public virtual DbSet<tOrderDetail> tOrderDetail { get; set; }
         public virtual DbSet<tProduct> tProduct { get; set; }
+        public virtual DbSet<tGusetBooks> tGusetBooks { get; set; }
     }
 }

@@ -13,28 +13,29 @@ namespace slnShopping.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel;
-    public partial class tMember
+    public partial class tGusetBooks
     {
-
+        
         public int fId { get; set; }
-
-        [DisplayName("帳號")]
-        [Required]
-        [StringLength(12, ErrorMessage = "帳號必須要3-12個字元", MinimumLength = 3)]
-        public string fUserId { get; set; }
-
-        [DisplayName("密碼")]
-        [Required]
-        [StringLength(12, ErrorMessage = "密碼必須為6-12個字元", MinimumLength = 6)]
-        public string fPwd { get; set; }
 
         [DisplayName("姓名")]
         [Required]
         public string fName { get; set; }
 
-        [DisplayName("信箱")]
+        [DisplayName("留言")]
         [Required]
-        [EmailAddress]
-        public string fEmail { get; set; }
+        public string fContent { get; set; }
+
+        [DisplayName("新增時間")]
+        [Required]
+        public System.DateTime fCreateTime { get; set; }
+
+        [DisplayName("回覆留言")]
+        [Required]
+        public string fReply { get; set; }
+
+        [DisplayName("回覆時間")]
+        [Required]
+        public Nullable<System.DateTime> fReplyTime { get; set; }
     }
 }
