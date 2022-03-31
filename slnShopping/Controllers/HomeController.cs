@@ -17,6 +17,11 @@ namespace slnShopping.Controllers
         dbShoppingCarEntities db = new dbShoppingCarEntities();
         //設定一頁可以顯示幾筆商品
         int pageSize = 6;
+        /// <summary>
+        /// 顯示商品
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         //Get:Home/Index
         public ActionResult Index(int page=1)
         {
@@ -27,11 +32,21 @@ namespace slnShopping.Controllers
             var result = product.ToPagedList(currentPage, pageSize);
             return View(result);
         }
+        /// <summary>
+        /// 登入 多載方法
+        /// </summary>
+        /// <returns></returns>
         //Get:Home/Login
         public ActionResult Login()
         {
             return View();
         }
+        /// <summary>
+        /// 登入時核對註冊的帳號與密碼
+        /// </summary>
+        /// <param name="fUserId"></param>
+        /// <param name="fPwd"></param>
+        /// <returns></returns>
         //Post:Home/Login
         [HttpPost]
         public ActionResult Login(string fUserId,string fPwd)
@@ -51,11 +66,20 @@ namespace slnShopping.Controllers
             
             return RedirectToAction("Index","Member");
         }
+        /// <summary>
+        /// 註冊 多載方法
+        /// </summary>
+        /// <returns></returns>
         //Get:Home/Register
         public ActionResult Register()
         {
             return View();
         }
+        /// <summary>
+        /// 把網頁輸入的註冊資料存到資料庫裡
+        /// </summary>
+        /// <param name="pMember"></param>
+        /// <returns></returns>
         //Post:Home/Register
         [HttpPost]
         public ActionResult Register(tMember pMember)

@@ -33,6 +33,7 @@
         </div>
     }
 </div>
+@*顯示多頁*@
 @Html.PagedListPager((IPagedList)Model, page=> Url.Action("Index", new { page }))
 
 

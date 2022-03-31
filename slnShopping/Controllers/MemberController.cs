@@ -20,6 +20,11 @@ namespace slnShopping.Controllers
         dbShoppingCarEntities db = new dbShoppingCarEntities();
         //設定一頁可以顯示幾筆商品
         int pageSize = 6;
+        /// <summary>
+        /// 顯示商品清單
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         public ActionResult Index(int page = 1)
         {
             int currentPage = page < 1 ? 1 : page;
@@ -29,13 +34,21 @@ namespace slnShopping.Controllers
             var result = product.ToPagedList(currentPage, pageSize);
             return View("../Home/Index","_LayoutMember",result);
         }
+        /// <summary>
+        /// 登出
+        /// </summary>
+        /// <returns></returns>
         //get:Member/Logout
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();      //登出
             return RedirectToAction("../Home/Login");
         }
-       
+        /// <summary>
+        /// 增加商品至購物車
+        /// </summary>
+        /// <param name="fPId"></param>
+        /// <returns></returns>
         //get:Member/AddCar
         public ActionResult AddCar(string fPId)
         {
@@ -67,6 +80,11 @@ namespace slnShopping.Controllers
             db.SaveChanges();
             return RedirectToAction("ShoppingCar");
         }
+        /// <summary>
+        /// 刪除購物車的商品
+        /// </summary>
+        /// <param name="fId"></param>
+        /// <returns></returns>
         public ActionResult DeleteCar(int fId)
         {
             //依fId 判斷要刪除的購物車裡的商品
@@ -84,7 +102,11 @@ namespace slnShopping.Controllers
             db.SaveChanges();
             return RedirectToAction("ShoppingCar");
         }
-        //get:Member/ShoppingCar
+        /// <summary>
+        /// 顯示購物車清單
+        /// </summary>
+        /// <returns></returns>
+        //get:Member/ShoppingCar 
         public ActionResult ShoppingCar()
         {
             //取得會員帳號並指定給fUserId
@@ -95,6 +117,13 @@ namespace slnShopping.Controllers
 
             return View(orderDetails);
         }
+        /// <summary>
+        /// 建立購物訂單
+        /// </summary>
+        /// <param name="fRecceiver"></param>
+        /// <param name="fEmail"></param>
+        /// <param name="fAddress"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult ShoppingCar(string fRecceiver, string fEmail, string fAddress)
         {
@@ -122,19 +151,27 @@ namespace slnShopping.Controllers
             db.SaveChanges();
             return RedirectToAction("OrderList");
         }
-
+        /// <summary>
+        /// 顯示購物定單
+        /// </summary>
+        /// <returns></returns>
         public ActionResult OrderList()
         {
             //取得會員帳號並指定給fUserId
             string fUserId = User.Identity.Name;
-            //找出該會員的訂單按成立訂單的日期遞增排序
+            //找出該會員的訂單按成立訂單的日期遞減排序
             var order = db.tOrder.Where(m => m.fUserId == fUserId).OrderByDescending(m => m.fDate).ToList();
             //把訂單顯示到網頁上
             return View(order);
         }
+        /// <summary>
+        /// 顯示商品訂單明細
+        /// </summary>
+        /// <param name="fOrderGuid"></param>
+        /// <returns></returns>
         public ActionResult OrderDetail(string fOrderGuid)
         {
-            //依 fOrderGuid 訂單編號找出商品明細
+            //依 fOrderGuid(訂單編號) 訂單編號找出商品明細
             var orderDetails = db.tOrderDetail.Where(m => m.fOrderGuid == fOrderGuid).ToList();
             return View(orderDetails);
         }
